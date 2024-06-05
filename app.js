@@ -12,8 +12,10 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
 app.use(morgan('short'));
+// Récupère les assets
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
+// Gère les requetes de type "application/x-www-form-urlencoded"
 app.use(express.urlencoded({ extended: true }));
 app.use(index);
 
