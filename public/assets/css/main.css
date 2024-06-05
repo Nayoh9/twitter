@@ -1,0 +1,31 @@
+.content {
+  max-width: 1000px;
+  margin-top: 1px;
+}
+
+.btn-tweet {
+  border-radius: 30px;
+}
+
+.profile_container {
+  width: 30px;
+  max-width: 300px;
+}
+
+.tweet-element {
+  border-radius: 0px;
+  border-top: 0px;
+  font-size: 14px;
+}
+
+.tweet-element:first-child {
+  border-top: 1px solid #ddd;
+}
+
+.b {
+  border: 1px solid red;
+}
+
+.b1 {
+  border: 1px solid green;
+}
