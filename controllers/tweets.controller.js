@@ -14,13 +14,15 @@ exports.tweetNew = (req, res, next) => {
 };
 
 exports.tweetCreate = async (req, res, next) => {
+    const tweet = req.body;
+    console.log(tweet);
     try {
-        const body = req.body;
-        await createTweet(body);
+        await createTweet(tweet);
         res.redirect('/tweets');
     } catch (e) {
         const errors = Object.keys(e.errors).map(key => e.errors[key].message);
-        res.status(400).render('tweets/tweet-form.pug', { errors });
+        console.log("CATCH !");
+        res.status(400).render('tweets/tweet-form.pug', { errors, tweet });
     }
 };
 
@@ -46,8 +48,8 @@ exports.tweetEdit = async (req, res, next) => {
 }
 
 exports.tweetUpdate = async (req, res, next) => {
+    const tweetId = req.params.tweetId;
     try {
-        const tweetId = req.params.tweetId;
         const body = req.body;
         await updateTweet(tweetId, body);
         res.redirect("/tweets");
