@@ -6,10 +6,14 @@ const errorHandler = require('errorhandler');
 require('./database');
 
 const app = express();
+exports.app = app
 const port = process.env.PORT || 3000;
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
+
+require("./config/session.config");
+require("./config/passport.config.js");
 
 app.use(morgan('short'));
 // Récupère les assets
@@ -35,4 +39,6 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 app.listen(port);
+
+
 
