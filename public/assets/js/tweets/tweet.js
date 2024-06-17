@@ -2,7 +2,6 @@ window.addEventListener("DOMContentLoaded", function (e) {
     bindTweet();
 })
 
-
 function bindTweet() {
     const elements = document.querySelectorAll(".btn-danger");
     const tweetContainer = document.querySelector("#tweet-list-container");

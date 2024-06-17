@@ -3,10 +3,13 @@ const schema = mongoose.Schema;
 const bcrypt = require("bcrypt");
 
 const userSchema = schema({
-    username: { type: String, required: [true, "Username required"] },
+    username: { type: String, required: [true, "Username required"], unique: true },
     local: {
-        email: { type: String, required: [true, "Email required"] },
+        email: { type: String, required: [true, "Email required"], unique: true },
         password: { type: String, required: [true, "Password required"] }
+    },
+    avatar: {
+        type: String, default: "assets/img/homme.jpg"
     }
 })
 
@@ -17,7 +20,6 @@ userSchema.statics.hashPassword = (password) => {
 
 // Méthode directement sur les instances du modèle
 userSchema.methods.comparePassword = function (password) {
-    console.log(this.local.password);
     return bcrypt.compare(password, this.local.password)
 }
 
